@@ -4,7 +4,6 @@ from functools import wraps
 from flask import Blueprint, render_template, redirect, url_for, request, abort, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import  check_password_hash, generate_password_hash
-from is_safe_url import is_safe_url
 
 from messages import (LOGIN_FAILED_MESSAGE, PASSWORD_RESET_SUCCESS_MESSAGE,
                    PASSWORD_RESET_NO_MATCH_MESSAGE, PASSWORD_RESET_WRONG_OLD_MESSAGE)
