@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/form.min.css">
+</head>
+<body>
+
+    <div class="card">
+
+        <h1 class="title">Welcome Back!</h1>
+
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        <form action="/login{% if next %}?next={{next}}{% endif %}" method="post">
+            <div class="wrap_input">
+                <input type="text" name="email_or_id" placeholder="Investor ID or E-mail" class="tb">
+            </div>
+            <div class="wrap_input">
+                <input type="password" name="password" placeholder="Password" autocomplete="current-password" class="tb">
+            </div>
+            <div class="wrap_checkbox">
+                <div class="checkbox_txt">Remeber me</div>
+                <input type="checkbox" name="remember" class="checkbox">
+            </div>
+            <input type="submit" value="Log in" class="btn">
+        </form>
+
+    </div>
+</body>
+</html>

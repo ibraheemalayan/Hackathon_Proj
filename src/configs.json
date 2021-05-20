@@ -1,0 +1,13 @@
+{
+    "SECRET_KEY": "tYqf2PoMr1Mkj1ZvcREVb2m6JxuODsHM",
+    "MAX_CONTENT_LENGTH": 10240,
+    "SEND_FILE_MAX_AGE_DEFAULT": 604800,
+    "SQLALCHEMY_DATABASE_URI": "sqlite:///db.sqlite3",
+    "SQLALCHEMY_TRACK_MODIFICATIONS": false,
+
+    "server_url":"http://localhost",
+    "host":"localhost:5000",
+    "api_keys":[
+        "bc85c648d7msh01184e020f6619ap1b6328jsn60e7075cd5c9"
+    ]
+}

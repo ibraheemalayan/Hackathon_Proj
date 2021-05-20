@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of investments</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/form.min.css">
+    <style>
+        .btn{
+            width: 75%;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="card">
+
+        <h1>House Of Investments</h1>
+
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if user.name %}
+            <h3>you are logged in as {{user.name}}</h3>
+            <div class="btn" onclick="window.location='/profile'">My Profile</div>
+            {% if user.is_admin %}
+            <div class="btn" onclick="window.location='/admin'">Admin Dashboard</div>
+            {% endif %}
+            <div class="btn" onclick="window.location='/logout'">Logout</div>
+        {% else %}
+            <h3>you are not logged in</h3>
+            <div class="btn" onclick="window.location='/login'">Login</div>
+        {% endif %}
+
+    </div>
+
+    <!-- Appy Chatbot widget, Paste the code in the <body> section -->
+    <script id="appyWidgetInit" src="https://chatbot.appypie.com/widget/loadbuild.js?cid=kmcpa1js-AGENT1615940546393-BOTID1615940546393&name=mixBuild"></script>
+    <!-- /. End Appy chatbot widget code -->
+</body>
+</html>
