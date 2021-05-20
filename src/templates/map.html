@@ -12,23 +12,61 @@
 
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
 
-    <script src="/static/js/gmaps.js"></script>
+    
 
 </head>
 
 <body>
 
-  
 
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <div class="floating">
+      <div class="title">Welcome {{user.name}}</div>
+      <p class="message">we are very gratefull for your willing to help people ❤</p>
+      <p class="message">Your Progress: 79%</p>
+      <div class="card_btn" onclick="OpenPathPopUp()">Generate Path</div>
+
+    </div>
+
+
+    <div id="pop_up" class="pop_up" style="display: none;">
+      <div class="modal-content">
+        <h1>Submit Feedback</h1>
+        <textarea class="area" name="" id="" cols="30" rows="13"></textarea>
+        <button id="close" class="send_btn" onclick="green()">Send Report</button>
+      </div>
+    </div>
+
+    <div id="path_pop_up" class="pop_up" style="display: none;">
+      <div class="modal-content">
+        <h1>Navigation Path</h1>
+
+        <div class="path_message">People in your path</div>
+
+        <div class="path_point">{{path_sens[0].name}}</div>
+
+        <div class="path_point">{{path_sens[1].name}}</div>
+
+        <div class="path_point">{{path_sens[2].name}}</div>
+        
+        
+        <button id="close" onclick="window.open('{{url}}')" class="send_btn">Navigate</button>
+
+        <div class="close_path" id="close_path">close</div>
+      </div>
+    </div>
+
+    <script src="/static/js/gmaps.js"></script>
+
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBBMYGuYQXflpIxMy7kpGj2VZa-0z5oRI&callback=initMap&libraries=&v=weekly"
       async
     ></script>
+
+    
 
 
 </body>
