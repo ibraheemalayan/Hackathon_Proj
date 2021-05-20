@@ -19,9 +19,9 @@ class Senior(db.Model):
     name = db.Column(db.String(64), nullable=False)
 
     age = db.Column(db.Integer)
-    is_male = db.Column(db.String(64))
+    is_male = db.Column(db.Boolean)
     phone_num = db.Column(db.String(15))
-    addess = db.Column(db.String(64))
+    address = db.Column(db.String(64))
     emergency_contact_num = db.Column(db.String(15))
     doctor_num = db.Column(db.String(15))
     notes = db.Column(db.String(64))
@@ -51,10 +51,12 @@ db.session.commit()
 raw_pass = "123"
 hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
 
-u1 = User(id=123, name="john", email="c@b.com", password=hashed_pass)
+# u1 = User(id=123, name="john", email="c@b.com", password=hashed_pass)
 
-db.session.add(u1)
+# db.session.add(u1)
 db.session.commit()
+
+sen = Senior(name="tom", age=33, is_male=True, phone_num="0547894561", address="some address", emergency_contact_num="0452565", doctor_num="+345354")
 
 # senoirs = []
 
