@@ -86,7 +86,7 @@ for row in sheet.iter_rows():
     is_male = True if row[3].value == "Male" else False
     checked_in_today = True if row[9].value == "Yes" else False
     gid = 100 if float(row[11].value) > 35 else 101
-    tmp_senior = Senior(id=int(row[0].value.replace(" ", "")), name=row[1].value, age=int(row[2].value), is_male=is_male,
+    tmp_senior = Senior(id=int(row[0].value), name=row[1].value, age=int(row[2].value), is_male=is_male,
                         phone_num=row[4].value,
                         address=row[5].value, emergency_contact_num=row[6].value,
                         doctor_num=row[7].value, notes=row[8].value,
