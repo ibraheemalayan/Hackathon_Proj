@@ -33,7 +33,7 @@ class Senior(db.Model):
             
             "age":self.age,
             "name":self.name,
-            "gender": ("male" if self.is_male else "female"),
+            "gender": ("male" if int(self.is_male) == 1 else "female"),
             "phone_num": self.phone_num,
             "address": self.address,
             "emergency_contact_num": self.emergency_contact_num,

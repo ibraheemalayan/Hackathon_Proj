@@ -15,7 +15,7 @@ user_jr@senior_buddy.org
 123
 
 # To reset database (from Excel)
-* delete src/db.sqlite3
+* delete src/db.sqlite3 ```rm .\src\db.sqlite3``` 
 * run fill_db.py ```python fill_db.py```
 
 
