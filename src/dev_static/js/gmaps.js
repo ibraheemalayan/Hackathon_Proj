@@ -173,6 +173,9 @@ function render(data){
           title: p.name,
         });
 
+        const m = (p.gender == "male")? `Male` : `Female`;
+        const d = (p.checked_in_today)?`Was visited today`:`Was not visited yet`;
+
         const contentString = `<div class="card">
 
     <img class="pic" src="/static/img/` + p.img_path + `.jpg" alt="">
@@ -185,8 +188,8 @@ function render(data){
       <li class="data_li">` + p.name + `</li>
       <li class="data_label">Age</li>
       <li class="data_li">` + p.age + `</li>
-      <li class="data_li">Male</li>
-      <li class="data_li">Was visited today</li>
+      <li class="data_li">` + m + `</li>
+      <li class="data_li">` + d +`</li>
       <li class="data_label">Phone</li>
       <li class="data_li">` + p.phone_num + `</li>
       <li class="data_label">Emergency contact</li>

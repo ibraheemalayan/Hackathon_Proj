@@ -57,19 +57,19 @@ class User(db.Model):
 db.create_all()
 db.session.commit()
 
-# raw_pass = "123"
-# hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
+raw_pass = "123"
+hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
 
-# u1 = User(id=100, name="john", email="a@b.com", password=hashed_pass)
+u1 = User(id=100, name="Nathan", email="user_jr@senior_buddy.org", password=hashed_pass)
 
-# db.session.add(u1)
+db.session.add(u1)
 
-# raw_pass = "123"
-# hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
+raw_pass = "123"
+hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
 
-# u2 = User(id=101, name="johny", email="d@b.com", password=hashed_pass)
+u2 = User(id=101, name="Elias", email="user_tel@senior_buddy.org", password=hashed_pass)
 
-# db.session.add(u2)
+db.session.add(u2)
 
 
 db.session.commit()
@@ -83,7 +83,7 @@ for row in sheet.iter_rows():
     if row[0].value == "ID":
         continue
    
-    is_male = True if row[3].value == "male" else False
+    is_male = True if row[3].value == "Male" else False
     checked_in_today = True if row[9].value == "Yes" else False
     gid = 100 if float(row[11].value) > 35 else 101
     tmp_senior = Senior(id=int(row[0].value.replace(" ", "")), name=row[1].value, age=int(row[2].value), is_male=is_male,
