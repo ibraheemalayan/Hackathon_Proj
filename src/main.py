@@ -23,13 +23,34 @@ def index():
 def profile():
     ''' Profile '''
 
-    return render_template( "profile.html")
+    return render_template( "map.html")
 
 @main.route('/list_seniors')
 @login_required
 def list_sens():
     ''' list_sens '''
 
-    all_seniors = dumps(Senior.query.all())
+    all_seniors = dumps(Senior.query.all(), default=str)
 
     return render_template( "list.html" , sens=all_seniors)
+
+@main.route('/json/list_seniors')
+@login_required
+def list_sens_json():
+    ''' list_sens '''
+
+    sens = Senior.query.filter_by(gaurdian_id=current_user.id)
+
+    print("\nGid {}\n".format(current_user.id))
+
+    sen_list = []
+
+    for s in sens:
+        sen_list.append(s.to_JSON())
+
+    res = dumps({"sen_list":sen_list}, default=str)
+
+    response = make_response(res, 200)
+    response.headers['Content-Type'] = 'application/json'
+
+    return response

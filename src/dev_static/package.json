@@ -1,5 +1,5 @@
 {
-  "name": "hoi",
+  "name": "senior",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -20,13 +20,17 @@
     "babel-loader": "^8.2.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^3.4.2",
     "webpack": "^5.30.0",
     "webpack-cli": "^4.6.0"
   },
   "dependencies": {
     "@nivo/line": "^0.67.0",
+    "mapbox-gl": "^2.2.0",
     "react": "^17.0.2",
     "react-dom": "^16.8.6",
+    "react-map-gl": "^6.1.15",
+    "react-mapbox-gl": "^5.1.1",
     "react-swipe-to-delete-component": "^0.5.5",
     "react-swipe-to-delete-ios": "^1.0.11"
   }

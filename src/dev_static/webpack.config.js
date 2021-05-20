@@ -1,14 +1,11 @@
 const path = require('path');
 
-const node_mods_path = path.resolve('C:', 'ws', 'House_of_investments', 'src', 'webpack_ws', 'node_modules')
+const node_mods_path = path.resolve('C:', 'ws', 'Hackathon_proj', 'src', 'dev_static', 'node_modules')
 
 module.exports = {
     mode: 'development',
     entry: {
-        profile: path.join(__dirname, '..', 'dev_static', 'js', 'profile.jsx'),
-        stock_page: path.join(__dirname, '..', 'dev_static', 'js', 'stock_page.jsx'),
-        admin_user_profile: path.join(__dirname, '..', 'dev_static', 'js', 'admin_user_profile.jsx'),
-        admin_stock_page: path.join(__dirname, '..', 'dev_static', 'js', 'admin_stock_page.jsx'),
+        map: path.join(__dirname, '..', 'dev_static', 'js', 'map.jsx'),
     },
     module: {
       rules: [
@@ -21,6 +18,10 @@ module.exports = {
               presets: ["@babel/preset-env", "@babel/preset-react"]
             }
           }
+        },
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
         }
       ]
     },

@@ -57,15 +57,12 @@ def login_post():
 
     # check if user actually exists
     if not user:
-        # if user doesn't exist reload the page with a message, and record the incident
-        record_login(db, request, email_or_id)
 
         flash(LOGIN_FAILED_MESSAGE)
         return redirect(url_for('auth.login'))
 
     # take the user supplied password, hash it, and compare it to the hashed password in database
     if not check_password_hash(user.password, password):
-        record_login(db, request, email_or_id, user_id=user.id)
         # if password is wrong, reload the page with a message, and record the incident
         flash(LOGIN_FAILED_MESSAGE)
         return redirect(url_for('auth.login'))

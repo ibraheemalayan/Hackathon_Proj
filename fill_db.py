@@ -13,6 +13,7 @@ app.config['SECRET_KEY'] = "random string"
 db = SQLAlchemy(app)
 
 
+
 class Senior(db.Model):
     ''' Senior Object '''
 
@@ -21,7 +22,7 @@ class Senior(db.Model):
     name = db.Column(db.String(64), nullable=False)
 
     age = db.Column(db.Integer)
-    is_male = db.Column(db.Boolean)
+    is_male = db.Column(db.String(64))
     phone_num = db.Column(db.String(15))
     address = db.Column(db.String(64))
     emergency_contact_num = db.Column(db.String(15))
@@ -31,6 +32,8 @@ class Senior(db.Model):
     lat = db.Column(db.Numeric(10, 8))
     lng = db.Column(db.Numeric(10, 8))
     img_path = db.Column(db.String)
+
+    gaurdian_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 
 class User(db.Model):
@@ -42,51 +45,54 @@ class User(db.Model):
 
     email = db.Column(db.String(100), unique=True, nullable=False)
 
-    password = db.Column(db.String(160), nullable=False)  # stores pbkdf2:sha512 hashed passwords
+    password = db.Column(db.String(160), nullable=False) # stores pbkdf2:sha512 hashed passwords
 
     name = db.Column(db.String(64), nullable=False)
+
+    seniors = db.relationship( 'Senior',
+     backref='User', lazy='dynamic', cascade="all,delete,delete-orphan")
+    
 
 
 db.create_all()
 db.session.commit()
 
-raw_pass = "123"
-hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
+# raw_pass = "123"
+# hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
 
-# u1 = User(id=123, name="john", email="c@b.com", password=hashed_pass)
-<<<<<<< HEAD
+# u1 = User(id=100, name="john", email="a@b.com", password=hashed_pass)
 
 # db.session.add(u1)
+
+# raw_pass = "123"
+# hashed_pass = generate_password_hash(raw_pass, method="pbkdf2:sha512:200000")
+
+# u2 = User(id=101, name="johny", email="d@b.com", password=hashed_pass)
+
+# db.session.add(u2)
+
+
 db.session.commit()
-=======
-#
-# db.session.add(u1)
-# db.session.commit()
 
 xlsx_file = Path('Seniors.xlsx')
 wb_obj = openpyxl.load_workbook(xlsx_file)
 
 # Read the active sheet:
 sheet = wb_obj.active
-Seniors = []
 for row in sheet.iter_rows():
     if row[0].value == "ID":
         continue
-    tmp_senior = Senior(name=row[0].value, age=row[1].value, is_male=row[2].value,
-                        phone_num=row[3].value,
-                        address=row[4].value, emergency_contact_num=row[5].value,
-                        doctor_num=row[6].value, notes=row[7].value,
-                        checked_in_today=row[8].value, lat=row[9].value, lng=row[10].value,
-                        img_path=row[11].value)
-    Seniors.append(tmp_senior)
->>>>>>> ff103b03b0aa5c81c00a08ec3022bb872b2aee3d
+   
+    is_male = True if row[3].value == "male" else False
+    checked_in_today = True if row[9].value == "Yes" else False
+    gid = 100 if float(row[11].value) > 35 else 101
+    tmp_senior = Senior(id=int(row[0].value.replace(" ", "")), name=row[1].value, age=int(row[2].value), is_male=is_male,
+                        phone_num=row[4].value,
+                        address=row[5].value, emergency_contact_num=row[6].value,
+                        doctor_num=row[7].value, notes=row[8].value,
+                        checked_in_today=checked_in_today, lat=float(row[10].value), lng=float(row[11].value),
+                        img_path=row[12].value, gaurdian_id=gid)
+    db.session.add(tmp_senior)
 
-sen = Senior(name="tom", age=33, is_male=True, phone_num="0547894561", address="some address", emergency_contact_num="0452565", doctor_num="+345354")
 
-# senoirs = []
-
-# for s in senoirs:
-#     sen = Senior(name=s["name"], ....)
-#     db.add(sen)
-
-# db.session.commit()
+db.session.commit()
