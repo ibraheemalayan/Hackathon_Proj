@@ -3,16 +3,18 @@
 homepage : http://localhost:5000/
 map : http://localhost:5000/profile
 
+# Note
+many files and codes in this project are not needed (copied from HOI)
 
 # users
 
-user_tel@senior_buddy.org
-123
+email: user_tel@senior_buddy.org    
+pass: 123    
 
 <!--  -->
 
-user_jr@senior_buddy.org
-123
+email: user_jr@senior_buddy.org    
+pass: 123    
 
 # To reset database (from Excel)
 * delete src/db.sqlite3 ```rm .\src\db.sqlite3``` 
