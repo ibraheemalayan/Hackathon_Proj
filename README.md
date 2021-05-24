@@ -1,7 +1,7 @@
 # Welcome
 
-homepage : http://localhost:5000/
-map : http://localhost:5000/profile
+* homepage : http://localhost:5000/    
+* map : http://localhost:5000/profile    
 
 # Note
 many files and codes in this project are not needed (copied from HOI)
